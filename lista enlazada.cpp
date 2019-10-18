@@ -10,6 +10,7 @@ struct nodo{
 void insertarNodo();
 void desplegar();
 void desplegar_atras();
+void eliminar();
 
 int main(){
 	insertarNodo();
@@ -21,6 +22,9 @@ int main(){
 	desplegar();
 	cout<< "\n\n Lista ultimo al primero"<<endl;
 	desplegar_atras();
+	cout<< "\nEliminar primer nodo" <<endl;
+	eliminar();
+	desplegar();
 	
 	return 0;
 }
@@ -56,4 +60,25 @@ void desplegar(){
 	}else{
 		cout<< "\n La lista esta vacia";
 	}
+}
+
+void desplegar_atras(){
+	nodo* actual = new nodo();
+	actual = ultimo;
+	if(primero!=NULL){
+		
+		while(actual!=NULL){
+			cout<<"\n" << actual->dato;
+			actual = actual->atras;
+		}
+	}else{
+		cout<< "\n La lista esta vacia";
+	}
+}
+
+void eliminar(){
+	nodo* aux = primero;
+	primero=primero->siguiente;
+	primero->atras = NULL;
+	delete aux;
 }
